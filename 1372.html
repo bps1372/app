@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Aplikasi - BPS KOTA SOLOK</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Palet Warna Dark Theme */
+        :root {
+            --bg-color: #0f172a;        /* Biru sangat gelap (Background utama) */
+            --bg-gradient: #0b1120;     /* Biru pekat untuk gradasi */
+            --card-bg: #1e293b;         /* Biru gelap (Background kartu) */
+            --card-hover: #334155;      /* Biru keabu-abuan (Hover kartu) */
+            --text-main: #f8fafc;       /* Putih kebiruan (Teks utama) */
+            --text-muted: #94a3b8;      /* Abu-abu kebiruan (Teks redup) */
+            --accent: #0ea5e9;          /* Biru muda menyala (Aksen) */
+            --accent-hover: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo img {
+            height: 35px; /* Mengatur ukuran logo BPS */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 8px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            color: var(--accent);
+            background-color: rgba(14, 165, 233, 0.1);
+        }
+
+        .nav-btn.active {
+            color: var(--text-main);
+            background-color: var(--accent);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Header Area */
+        .header {
+            background: linear-gradient(135deg, var(--bg-gradient) 0%, var(--bg-color) 100%);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--text-main), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Tab Sections */
+        .tab-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
+
+        /* Grid Aplikasi */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            background-color: var(--card-hover);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-top-color: var(--accent-hover);
+        }
+
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(14, 165, 233, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .icon-wrapper {
+            background-color: var(--accent);
+        }
+
+        .card-icon {
+            font-size: 28px;
+            color: var(--accent);
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .card-icon {
+            color: var(--text-main);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Hero About Section (Sesuai Referensi Gambar) */
+        .hero-about {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 0;
+            min-height: 50vh; /* Memberikan ruang agar terlihat luas */
+        }
+
+        .hero-greeting {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .hero-name {
+            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Ukuran teks responsif, maksimal 4.5rem */
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background-color: var(--bg-gradient);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Media Queries untuk Layar Kecil */
+        @media (max-width: 768px) {
+            .hero-greeting { font-size: 1.2rem; }
+            .hero-desc { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-logo">
+            <!-- Logo BPS -->
+            <img src="https://raw.githubusercontent.com/bps1372/kudo/main/Data/logo-bps.png" alt="Logo BPS">
+            BPS KOTA SOLOK
+        </div>
+        <div class="nav-menu">
+            <button class="nav-btn active" onclick="switchTab('apps')">Aplikasi</button>
+            <button class="nav-btn" onclick="switchTab('about')">About</button>
+        </div>
+    </nav>
+
+    <!-- Header Area -->
+    <div class="header">
+        <h1>Portal Aplikasi</h1>
+        <p>Akses cepat dan terintegrasi untuk sistem digital BPS Kota Solok</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- TAB 1: APLIKASI -->
+        <div id="apps" class="tab-section active">
+            <div class="projects-grid">
+                <!-- GESIT -->
+                <a href="https://auto-sura1372.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-rocket card-icon"></i></div>
+                    <h3>GESIT</h3>
+                    <p>Otomatisasi Surat (Auto-Sura)</p>
+                </a>
+
+                <!-- ARUNA -->
+                <a href="http://s.id/ARUNA1372" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-chart-pie card-icon"></i></div>
+                    <h3>ARUNA</h3>
+                    <p>Sistem Pencatatan Anggaran</p>
+                </a>
+                
+                <!-- KUDO -->
+                <a href="http://bps1372.github.io/kudo/main.html" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-building-circle-check card-icon"></i></div>
+                    <h3>KUDO</h3>
+                    <p>Korek Usaha Digital Online</p>
+                </a>
+
+                <!-- SIANTARA -->
+                <a href="https://antaranewsscrapper-bps1372.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-newspaper card-icon"></i></div>
+                    <h3>NewsScrapper</h3>
+                    <p>Antara News Scrapper</p>
+                </a>
+
+                <!-- KUDO -->
+                <a href="xx" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-building-circle-check card-icon"></i></div>
+                    <h3>SAdminstrasi Machine</h3>
+                    <p>Mesin pembantu convert file, merge file dan lainnya</p>
+                </a>
+
+                <!-- KUDO -->
+                <a href="xx" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-building-circle-check card-icon"></i></div>
+                    <h3>Scraping System Machine</h3>
+                    <p>Masih Dalam Pengembangan</p>
+                </a>
+
+                
+            </div>
+        </div>
+
+        <!-- TAB 2: ABOUT -->
+        <div id="about" class="tab-section">
+            <div class="hero-about">
+                <h2 class="hero-greeting">Halo, Sobat BPS 1372</h2>
+                <h1 class="hero-name">Portal Aplikasi <br>BPS Kota Solok</h1>
+                <p class="hero-desc">Kumpulan aplikasi dibangun dan dikembangkan oleh <strong>Alber Analafean</strong>, selaku Asisten Pranata Komputer bagian dari Program Maganghub Batch 3 KEMNAKER RI. Portal ini dirancang secara khusus untuk mempermudah proses tugas otomasi ataupun pengolahan data di lingkup Kota Solok.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Badan Pusat Statistik Kota Solok.</p>
+    </footer>
+
+    <!-- JavaScript untuk Fungsi Tab Menu -->
+    <script>
+        function switchTab(tabId) {
+            // Sembunyikan semua tab
+            document.querySelectorAll('.tab-section').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Hapus status aktif dari semua tombol menu
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Tampilkan tab yang dipilih
+            document.getElementById(tabId).classList.add('active');
+            
+            // Berikan status aktif pada tombol yang diklik
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
