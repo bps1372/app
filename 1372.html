@@ -28,6 +28,39 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* --- TAMBAHAN: CSS UNTUK SPLASH SCREEN --- */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Pastikan selalu berada di atas */
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+
+        #splash-screen img {
+            width: 150px; /* Ukuran logo di splash screen */
+            height: auto;
+            animation: pulse 1.5s infinite alternate ease-in-out;
+        }
+
+        /* Class untuk menyembunyikan splash screen */
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+        /* ----------------------------------------- */
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -298,6 +331,9 @@
 </head>
 <body>
 
+    <div id="splash-screen">
+        <img src="https://raw.githubusercontent.com/bps1372/kudo/main/Data/logo-bps.png" alt="Logo BPS">
+    </div>
     <nav>
         <div class="nav-logo">
             <img src="https://raw.githubusercontent.com/bps1372/kudo/main/Data/logo-bps.png" alt="Logo BPS">
@@ -348,7 +384,7 @@
                     <p>Aplikasi Pemilihan Pegawai Teladan Triwulanan BPS Kota Solok</p>
                 </a>
 
-                <a href=https://sbr-lanjutan.streamlit.app//" class="project-card" target="_blank" rel="noopener noreferrer">
+                <a href="https://sbr-lanjutan.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
                     <div class="icon-wrapper"><i class="fa-solid fa-shop card-icon"></i></div>
                     <h3>Search Engine SBR</h3>
                     <p>Aplkiasi Search Engine SBR Lanjutan terkait pencarian direktori usaha dan ground check SBR Lanjutan</p>
@@ -372,7 +408,7 @@
             <div class="hero-about">
                 <h2 class="hero-greeting">Halo, Sobat BPS 1372</h2>
                 <h1 class="hero-name">Portal Aplikasi <br>BPS Kota Solok</h1>
-                <p class="hero-desc">Kumpulan aplikasi dibangun dan dikembangkan oleh <strong>Alber Analafean</strong></a>, selaku Asisten Pranata Komputer bagian dari Program Maganghub Batch 3 KEMNAKER RI dari 16 Desember 2025 - 15 Juni 2026. Portal ini dirancang secara khusus untuk dokumentasi inovasi yang telah dikembangkan.</p>
+                <p class="hero-desc">Kumpulan aplikasi dibangun dan dikembangkan oleh <strong>Alber Analafean</strong>, selaku Asisten Pranata Komputer bagian dari Program Maganghub Batch 3 KEMNAKER RI dari 16 Desember 2025 - 15 Juni 2026. Portal ini dirancang secara khusus untuk dokumentasi inovasi yang telah dikembangkan.</p>
                 
                 <a href="https://github.com/bps1372" target="_blank" class="github-btn" rel="noopener noreferrer">
                     <i class="fa-brands fa-github"></i> Kunjungi GitHub
@@ -387,6 +423,21 @@
     </footer>
 
     <script>
+        // --- TAMBAHAN: SCRIPT UNTUK SPLASH SCREEN ---
+        window.addEventListener('load', function() {
+            // Mengatur berapa lama splash screen muncul (contoh: 2000 ms = 2 detik)
+            setTimeout(function() {
+                const splashScreen = document.getElementById('splash-screen');
+                splashScreen.classList.add('hidden'); // Mulai animasi fade-out
+                
+                // Hapus elemen dari DOM setelah animasi selesai (0.8 detik) agar tidak mengganggu klik
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 800);
+            }, 2000);
+        });
+        // --------------------------------------------
+
         function switchTab(tabId) {
             // Sembunyikan semua tab
             document.querySelectorAll('.tab-section').forEach(tab => {
