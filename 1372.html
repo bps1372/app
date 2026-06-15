@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Aplikasi - BPS KOTA SOLOK</title>
     
-    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -204,14 +202,14 @@
             color: var(--text-muted);
         }
 
-        /* Hero About Section (Sesuai Referensi Gambar) */
+        /* Hero About Section */
         .hero-about {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
             padding: 40px 0;
-            min-height: 50vh; /* Memberikan ruang agar terlihat luas */
+            min-height: 50vh;
         }
 
         .hero-greeting {
@@ -222,7 +220,7 @@
         }
 
         .hero-name {
-            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Ukuran teks responsif, maksimal 4.5rem */
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             line-height: 1.1;
             margin-bottom: 25px;
             font-weight: 700;
@@ -261,10 +259,8 @@
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav>
         <div class="nav-logo">
-            <!-- Logo BPS -->
             <img src="https://raw.githubusercontent.com/bps1372/kudo/main/Data/logo-bps.png" alt="Logo BPS">
             BPS KOTA SOLOK
         </div>
@@ -274,56 +270,59 @@
         </div>
     </nav>
 
-    <!-- Header Area -->
     <div class="header">
         <h1>Portal Aplikasi</h1>
         <p>Akses cepat dan terintegrasi untuk sistem digital BPS Kota Solok</p>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
         
-        <!-- TAB 1: APLIKASI -->
         <div id="apps" class="tab-section active">
             <div class="projects-grid">
-                <!-- GESIT -->
-                <a href="https://auto-sura1372.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
+                <a href="https://gesit-bps1372.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
                     <div class="icon-wrapper"><i class="fa-solid fa-rocket card-icon"></i></div>
                     <h3>GESIT</h3>
                     <p>Otomatisasi Surat (Auto-Sura)</p>
                 </a>
 
-                <!-- ARUNA -->
-                <a href="http://s.id/ARUNA1372" class="project-card" target="_blank" rel="noopener noreferrer">
+                <a href="https://aladin1372.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-wand-magic-sparkles card-icon"></i></div>
+                    <h3>ALADIN</h3>
+                    <p>Aplikasi Layanan Administrasi</p>
+                </a>
+
+                <a href="https://script.google.com/macros/s/AKfycbzuWJnSzpKpRTIfjro-OAS2oyFUzD8haC91UTDL6fUg4BjT3_Zv7wBeiWM-oVyenqiu/exec" class="project-card" target="_blank" rel="noopener noreferrer">
                     <div class="icon-wrapper"><i class="fa-solid fa-chart-pie card-icon"></i></div>
                     <h3>ARUNA</h3>
                     <p>Sistem Pencatatan Anggaran</p>
                 </a>
                 
-                <!-- KUDO -->
-                <a href="http://bps1372.github.io/kudo/main.html" class="project-card" target="_blank" rel="noopener noreferrer">
+                <a href="https://bps1372.github.io/kudo/main.html" class="project-card" target="_blank" rel="noopener noreferrer">
                     <div class="icon-wrapper"><i class="fa-solid fa-building-circle-check card-icon"></i></div>
                     <h3>KUDO</h3>
                     <p>Korek Usaha Digital Online</p>
                 </a>
 
-                <!-- SIANTARA -->
+                <a href="https://s.id/Pegawai_Teladan1372" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-award card-icon"></i></div>
+                    <h3>Pegawai Teladan</h3>
+                    <p>Pemilihan Pegawai Teladan</p>
+                </a>
+
                 <a href="https://antaranewsscrapper-bps1372.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
                     <div class="icon-wrapper"><i class="fa-solid fa-newspaper card-icon"></i></div>
                     <h3>NewsScrapper</h3>
                     <p>Antara News Scrapper</p>
                 </a>
 
-                <!-- KUDO -->
-                <a href="xx" class="project-card" target="_blank" rel="noopener noreferrer">
-                    <div class="icon-wrapper"><i class="fa-solid fa-building-circle-check card-icon"></i></div>
+                <a href="https://github.com/bps1372/antrian" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-wrapper"><i class="fa-solid fa-ticket card-icon"></i></div>
                     <h3>Antrian PST1372</h3>
                     <p>Sistem Antrian Pengunjung PST</p>
-                </a>    
+                </a>   
             </div>
         </div>
 
-        <!-- TAB 2: ABOUT -->
         <div id="about" class="tab-section">
             <div class="hero-about">
                 <h2 class="hero-greeting">Halo, Sobat BPS 1372</h2>
@@ -334,12 +333,10 @@
 
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Badan Pusat Statistik Kota Solok.</p>
     </footer>
 
-    <!-- JavaScript untuk Fungsi Tab Menu -->
     <script>
         function switchTab(tabId) {
             // Sembunyikan semua tab
