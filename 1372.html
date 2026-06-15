@@ -232,6 +232,45 @@
             color: var(--text-muted);
             max-width: 750px;
             line-height: 1.7;
+            margin-bottom: 30px; /* Tambahan margin untuk jarak dengan tombol */
+        }
+        
+        .hero-desc a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .hero-desc a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Tombol GitHub */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .github-btn:hover {
+            background-color: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+            border-color: transparent;
+        }
+
+        .github-btn i {
+            font-size: 1.3rem;
         }
 
         /* Footer */
@@ -327,7 +366,11 @@
             <div class="hero-about">
                 <h2 class="hero-greeting">Halo, Sobat BPS 1372</h2>
                 <h1 class="hero-name">Portal Aplikasi <br>BPS Kota Solok</h1>
-                <p class="hero-desc">Kumpulan aplikasi dibangun dan dikembangkan oleh <strong>Alber Analafean</strong>, selaku Asisten Pranata Komputer bagian dari Program Maganghub Batch 3 KEMNAKER RI. Portal ini dirancang secara khusus untuk dokumentasi inovasi yang telah dikembangkan.</p>
+                <p class="hero-desc">Kumpulan aplikasi dibangun dan dikembangkan oleh <a href="https://github.com/bps1372" target="_blank"><strong>Alber Analafean</strong></a>, selaku Asisten Pranata Komputer bagian dari Program Maganghub Batch 3 KEMNAKER RI. Portal ini dirancang secara khusus untuk dokumentasi inovasi yang telah dikembangkan.</p>
+                
+                <a href="https://github.com/bps1372" target="_blank" class="github-btn" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i> Kunjungi GitHub
+                </a>
             </div>
         </div>
 
